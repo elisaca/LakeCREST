@@ -3,7 +3,7 @@ Lake CCI data analysis
 
 work in progress...
 
-# How to use the files in this repository?
+## How to use the files in this repository?
 The respository is grouped into the following categories:
 
 - `setup` – Jupyter and IPython setup / configuration.
