@@ -4,7 +4,7 @@
 To setup the python environment with the necessary dependencies you can use the environment.yml provided.
 
 ## Setup using Anaconda Prompt 
-Start your anaconda prompt and create the LakeCrest conda environment with the command:
+Start your anaconda prompt and create the LakeCrest conda environment with the command (change file location to match your path):
 
 `conda env create --name lakecrest --file "[...]\environment.yml"`
 
