@@ -9,4 +9,4 @@ Start your anaconda prompt and create the LakeCrest conda environment with the c
 `conda env create --name lakecrest --file "[...]\environment.yml"`
 
 ## Setup using Anaconda Navigator
-Alternatively you can also create the LakeCrest conda environment over the Anaconda Navigator by selecting the Environments/import tab and choose the environment.yml as specification file
+Alternatively you can also create the LakeCrest conda environment over the Anaconda Navigator by selecting the Environments/import tab and choose the environment.yml as specification file.
