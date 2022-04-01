@@ -1,5 +1,5 @@
 
-# Setup LakeCREST conda environment
+# LakeCREST environment setup
 
 To setup the python environment with the necessary dependencies you can use the environment.yml provided.
 
