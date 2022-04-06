@@ -15,5 +15,3 @@ Alternatively you can also create the LakeCrest conda environment over the Anaco
 It is possible to update an outdated existing environment with the command:
 
 `conda env update -f "[...]\environment.yml" --prune`
-
-This will make make necessary updates to the packages and delete no more used packages.
