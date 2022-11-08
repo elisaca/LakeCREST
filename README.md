@@ -1,7 +1,7 @@
 # CCI Lakes Extractor (LakeCREST)
 This repository contains a python-based tool to extract lake subsets from the global [ESA CCI Lakes](https://catalogue.ceda.ac.uk/uuid/a07deacaffb8453e93d57ee214676304) dataset based on the code from the [LakeCREST](https://climate.esa.int/en/esa-climate/esa-cci/Fellowships/esa-cci-research-fellowship-elisa-calamita/) project.
 
-This tool allows the user to specify the necessary lakes, variables and time-range to extract. The extraction is then executed using the CCI lakes maskfile and will create a merged netCDF file per lake. The extraction can be either ran on a local copy of the Lakes CCI dataset or directly from the online source using OPeNDAP (slow!).
+This tool allows the user to specify the necessary lakes, variables and time-range to extract. The extraction is then executed using the CCI lakes maskfile and will create a merged netCDF file per lake. The extraction can be either run on a local copy of the Lakes CCI dataset or directly from the online source using OPeNDAP (slow!).
 
 ## Dependencies
 To run the script the following packages are needed:
