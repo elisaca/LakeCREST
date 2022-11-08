@@ -1,41 +1,21 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Sep 21 11:05:07 2022
 
-@author: Elisa Calamita, elisa.calamita@eawag.ch
-
-- extract all lake LSWT data from LakeCCI v2.0.1
-
-"""
 import os
 import sys
-import pathlib
-import multiprocessing
-import time
+from time import time
 import pandas as pd
 from datetime import datetime
-from tqdm.notebook import tqdm
-from pathlib import Path
-from time import time
-from tqdm.notebook import tqdm
 import numpy as np
 import netCDF4 as nc4
 import json
 from scripts import constants as c
 from scripts import ROOT
-import xarray as xr
 import re
 
 module_path = os.path.abspath(os.path.join('../'))
 if module_path not in sys.path:
     sys.path.append(module_path)
-
-def table(df):
-    from itables import init_notebook_mode, show
-    init_notebook_mode(all_interactive=True)
-    show(df, maxBytes=0)
     
-
 def valid_variables(variables: list):
     """Check list of variables for validity and return boolean."""
     path_abbreviations = ROOT.joinpath(c.PATH_ABBREV)
@@ -44,7 +24,6 @@ def valid_variables(variables: list):
     f.close()
     check = all(item in abbrev_dict.keys() for item in variables)
     return check
-
 
 def get_shortname(variables: list):
     """Get shortnames for variables and return a shortened string for filename."""
@@ -108,59 +87,6 @@ def find_lakename(lakeid: int):
     else:
         lakename = names.iloc[0]
     return re.sub(r'[^a-zA-Z\s]', '', lakename)
-
-def extract_lake_subsets(lakeids: list = None, lakenames: list = None, use_opendap: bool = False,
-                         variables: list = c.DEFAULT_VARS,
-                         startdate: str = c.DEFAULT_START, enddate: str = c.DEFAULT_END,
-                         compress: bool = True, complevel: int = 4, verbose: bool = False, temp: bool = False):
-    """Take list of lakeids or lakenames extract subsets and return filenames of outputs
-    
-    Parameters
-    ----------
-    lakeids : list
-        CCI lake ids of lakes to extract
-    lakenames : list
-        CCI lake names of lakes to extract
-    use_opendap : bool
-        Download the CCI Lakes data using oPeNDAP
-    variables : list
-        Variables to extract
-    startdate : str
-        Startdate of the timeseries to extract in the form (YYYY-MM-DD)
-    enddate : str
-        Enddate of the timeseries to extract in the form (YYYY-MM-DD)
-    compress : bool
-        Apply z-lib compression
-    complevel : int
-        Compression level to use
-    verbose : bool
-        Print status updates to console
-    temp : bool
-        Put inside temporary folder
-
-    Returns
-    -------
-    list
-        Filenames of the extracted subset
-    """
-    if not (bool(lakeids) or bool(lakenames)):
-        raise ValueError('At least one of the params lakeid and lakename '
-                         'should be passed!')
-    elif not lakeids:
-        lakeids = [find_lakeid(lakename) for lakename in lakenames]
-
-    if not valid_variables(variables):
-        raise ValueError('The passed variable-list is invalid!')
-
-    fns = []
-    for lakeid in tqdm(lakeids, desc='Total progress'):
-        fn = extract_lake_subset(lakeid=lakeid,
-                                 use_opendap=use_opendap, variables=variables,
-                                 startdate=startdate, enddate=enddate,
-                                 compress=compress, complevel=complevel, verbose=verbose, temp=temp)
-        fns.append(fn)
-    return fns
-
 
 def extract_lake_subset(lakeid: int = None, lakename: str = None, use_opendap: bool = False,
                         variables: list = c.DEFAULT_VARS,
@@ -357,7 +283,7 @@ def extract_lake_subset(lakeid: int = None, lakename: str = None, use_opendap: b
 
         # Append the rest of the days to output .nc file
         with nc4.Dataset(path_output, 'r+', format='NETCDF4') as nc_out:
-            for idx, url in enumerate(tqdm(urls, desc=lakename,  position=10)):
+            for idx, url in enumerate(urls):
                 if idx == 0:
                     # Skip first url
                     continue
@@ -434,7 +360,7 @@ def extract_lake_subset(lakeid: int = None, lakename: str = None, use_opendap: b
 
         # Append the rest of the days to output .nc file
         with nc4.Dataset(path_output, 'r+', format='NETCDF4') as nc_out:
-            for idx, filepath in enumerate(tqdm(paths_ncfiles, desc=lakename, position=10)):
+            for idx, filepath in enumerate(paths_ncfiles):
                 if idx == 0:
                     continue # Skip first url
                 with nc4.Dataset(filepath, 'r') as nc_in:
@@ -465,10 +391,9 @@ def data_extraction(id_and_settings):
     """Take tuple in the form (id, settings) and call extraction function."""
     id = id_and_settings[0]
     settings = id_and_settings[1]
-    #try:
-    # (list) Variables to extract
+
     log("Processing id: {}".format(id))
-    print('Starting subset extraction..')
+    
     try:
         fns_ext = extract_lake_subset(lakeid=int(id),
                                       use_opendap=settings['use_opendap'], 
