@@ -10,13 +10,13 @@ This tool script allows the user to specific the necessary variables and time-ra
 
 ## How to use
 ###Setup python environment
-Build a conda environment from the provided YAML file in `setup/environment.yaml`:
+Build a conda environment from the provided YAML file in `setup/environment.yaml`:<br/>
 `conda create --name lakecrest_tools --file setup/environment.yaml`
 
-Install the necessary packages to an existing conda environment:
+Install the necessary packages to an existing conda environment:<br/>
 `conda install netCDF4 numpy pandas`
 
-Install the necessary packages listed in the dependencies using pip:
+Install the necessary packages listed in the dependencies using pip:<br/>
 `pip install netCDF4 numpy pandas`
 
 ###Setup local dataset
