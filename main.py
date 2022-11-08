@@ -7,11 +7,11 @@ from scripts.functions import data_extraction, find_lakeid
 # Extract specific lakes by lakeids
 lakeids = [6, 2, 8, 9, 10, 12]
 
-# Extract all lakes
+# (OR) Extract all lakes
 #lakescci_lut = pd.read_csv('data/auxiliary/lakescci_v2.0.2_data-availability.csv')
 #lakeids = list(lakescci_lut.id)
 
-# Extract specific lakes by names
+# (OR) Extract specific lakes by names
 #lakenames = ['Michigan']
 #lakeids = [find_lakeid(lakename) for lakename in lakenames]
 
@@ -30,7 +30,7 @@ settings = {'variables': ['lake_surface_water_temperature',
 # Multiprocessing settings
 n_processes = 4
 
-# Main
+# Main (run extraction)
 if __name__ == '__main__':
     
     if settings['use_opendap']:
