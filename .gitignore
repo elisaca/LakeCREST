@@ -343,6 +343,9 @@ data/output/*
 !data/output/.gitkeep
 
 !data/auxiliary/
+data/auxiliary/*
+!data/auxiliary/.gitkeep
+
 
 !data/extracted/
 data/extracted/*
