@@ -20,7 +20,7 @@ This tool script allows the user to specific the necessary variables and time-ra
 `pip install netCDF4 numpy pandas`
 
 ### Setup local dataset
-To use the script efficiently it is necessary to move a local copy of the CCI Lakes dataset into the `data/raw/` folder. For example if using the CCI Lakes v2.0.2 dataset create a copy of the dataset with the yearly folders in `data/raw/v2.0.2/`.
+To use the script efficiently it is necessary to move a local copy of the CCI Lakes dataset into the `data/raw/` folder. For example if using the CCI Lakes v2.0.2 dataset create a copy of the dataset with the yearly folders located within `data/raw/v2.0.2/`.
 
 ### Configure the extraction settings
-Before running the extraction from `main.py` the user can change the the desired parameters in the file. By changing the variable `VERSION` in `scripts/constants.py` it is possible to run the extraction for older CCI Lakes versions.
+Before running the extraction from `main.py` the user can set the desired extraction parameters in the file. By changing the variable `VERSION` in `scripts/constants.py` it is possible to run the extraction for older CCI Lakes versions.
