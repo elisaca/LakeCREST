@@ -342,6 +342,8 @@ data/raw/*
 data/output/*
 !data/output/.gitkeep
 
+!data/auxiliary/
+
 !data/extracted/
 data/extracted/*
 !data/extracted/.gitkeep
