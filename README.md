@@ -3,7 +3,8 @@ This repository contains a python-based tool to extract lake subsets from the gl
 
 This tool allows the user to specify the necessary lakes, variables and time-range to extract. The extraction is then executed using the CCI lakes maskfile and will create a merged netCDF file per lake. The extraction can be either ran on a local copy of the Lakes CCI dataset or directly from the online source using OPeNDAP (slow!).
 
-# Dependencies
+## Dependencies
+To run the script the following packages are needed:
 - netCDF4
 - numpy
 - pandas
