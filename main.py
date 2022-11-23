@@ -8,6 +8,7 @@ from scripts.functions import data_extraction, find_lakeid
 lakeids = [6, 2, 8, 9, 10, 12]
 
 # (OR) Extract all lakes
+#import pandas as pd
 #lakescci_lut = pd.read_csv('data/auxiliary/lakescci_v2.0.2_data-availability.csv')
 #lakeids = list(lakescci_lut.id)
 
